@@ -2,12 +2,8 @@ import axios from 'axios';
 
 const defaultTimeout = 240000;
 
-const genericHttpClient = axios.create({
-  timeout: defaultTimeout
-});
-
 const api = axios.create({
-  baseURL: 'http://localhost:3000/',
+  baseURL: process.env.REACT_APP_API_URL,
   timeout: defaultTimeout
 });
 
@@ -23,5 +19,4 @@ api.interceptors.request.use(async config => {
 });
 
 export default api;
-var baseURL = process.env.REACT_APP_API_URL;
-export { api, genericHttpClient, baseURL };
+export { api };
